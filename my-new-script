@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -e
+[ -z "$1" ] && echo "Error: Please enter file name as an argument!" && exit 1
+_nf_path="${HOME:-'~'}"/.local/bin/"$1"
+[ -f "$_nf_path" ] && echo "Error: File already exist!" && exit 1
+echo "#!/usr/bin/env bash" > "$_nf_path"
+chmod +x "$_nf_path"
+if [ -z "$EDITOR" ]; then
+	echo "your script is created: $_nf_path"
+else
+	$EDITOR "$_nf_path"
+fi
