@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+function main {
+	local _fname="$1"
+	[ -z "$_fname" ] && exit 1
+	${EDITOR:-vi} "$(which $_fname)"
+}
+main $@
